@@ -9,6 +9,7 @@ clean-cluster:
 deploy: cluster deploy-helm prepare-agent-config
 
 deploy-helm: git-server-container flightctl-api-container flightctl-worker-container flightctl-periodic-container
+	test/scripts/install_kubectl.sh
 	kubectl config set-context kind-kind
 	test/scripts/install_helm.sh
 	test/scripts/deploy_with_helm.sh
